@@ -42,8 +42,9 @@ const UpdateProfile = () => {
 
   // Queries
   const { data: currentUser } = useGetUserById(id || "");
-  const { mutateAsync: updateUser, isLoading: isLoadingUpdate } =
-    useUpdateUser();
+  const { mutateAsync: updateUser, status } = useUpdateUser();
+
+  const isLoadingUpdate = status === "success";
 
   if (!currentUser)
     return (
